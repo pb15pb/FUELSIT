@@ -1,0 +1,2605 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUELSIT - Fuel Your Game, Feel Your Progress</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzFBMjAyNiIvPgo8cGF0aCBkPSJNMTYuNjQgNC42OEMxMi44IDkuMzYgMTIuOCAxNC4zMiAxNC41NiAxNy41MkMxNi4zMiAyMC43MiAyMC40IDIyLjQgMjMuNTIgMjkuMTJDMjIuNCAxOS4yIDE2LjQ4IDE5LjEyIDEzLjQ0IDE2Ljk2QzEwLjQgMTQuOCA5LjYgMTEuMDQgMTYuNjQgNC42OFoiIGZpbGw9IiNGRjRCMDAiLz4KPC9zdmc+Cg==" type="image/svg+xml">
+    <style>
+        :root {
+            --flame: #FF4B00;
+            --flame-light: #FF7B40;
+            --deep-pitch: #1A2026;
+            --white: #FFFFFF;
+            --off-white: #F5F5F5;
+            --light-gray: #EAEAEA;
+            --medium-gray: #888888;
+            --dark-gray: #444444;
+            --camp-green: #0da847;
+            --camp-green-light: #10c453;
+            
+            --font-main: 'Barlow', sans-serif;
+            --font-accent: 'Bebas Neue', sans-serif;
+            
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            
+            --shadow-sm: 0 2px 10px rgba(0,0,0,0.05);
+            --shadow-md: 0 10px 20px rgba(0,0,0,0.1);
+            --shadow-lg: 0 20px 40px rgba(0,0,0,0.15);
+            --shadow-flame: 0 10px 20px rgba(255, 75, 0, 0.2);
+            --shadow-green: 0 10px 20px rgba(13, 168, 71, 0.2);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            overflow-x: hidden;
+            font-family: var(--font-main);
+            color: var(--deep-pitch);
+            background-color: var(--white);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            width: 100%;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            line-height: 1.2;
+        }
+        
+        h1 {
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+        
+        h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            font-weight: 600;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        /* Table of Contents */
+        .toc {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 1rem 0;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
+            backdrop-filter: blur(10px);
+        }
+        
+        .toc.scrolled {
+            padding: 0.5rem 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .toc-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .toc-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: transform var(--transition-fast);
+        }
+        
+        .toc-brand:hover {
+            transform: translateY(-2px);
+        }
+        
+        .toc-logo {
+            width: 2.5rem;
+            height: 2.5rem;
+            transition: transform var(--transition-fast);
+        }
+        
+        .toc-brand:hover .toc-logo {
+            transform: rotate(10deg);
+        }
+        
+        .toc-brand-name {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 0.1em;
+            color: var(--deep-pitch);
+        }
+        
+        .toc-sections {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .toc-section {
+            font-weight: 600;
+            position: relative;
+            padding: 0.5rem 0;
+            color: var(--deep-pitch);
+        }
+        
+        .toc-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--flame);
+            transition: width var(--transition-normal);
+        }
+        
+        .toc-section:hover::after {
+            width: 100%;
+        }
+        
+        .toc-action {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--flame);
+            border-radius: 4px;
+            color: var(--white);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.875rem;
+            transition: all var(--transition-normal);
+            border: 2px solid transparent;
+        }
+        
+        .toc-action:hover {
+            background-color: transparent;
+            border-color: var(--flame);
+            color: var(--flame);
+            transform: translateY(-2px);
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--deep-pitch);
+            transition: color var(--transition-fast);
+        }
+        
+        .mobile-menu-toggle:hover {
+            color: var(--flame);
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(13, 168, 71, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(13, 168, 71, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(13, 168, 71, 0);
+            }
+        }
+        
+        /* Cover Section */
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse-light {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 75, 0, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 75, 0, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 75, 0, 0);
+            }
+        }
+
+        .animate {
+            opacity: 0;
+            animation-duration: 0.8s;
+            animation-fill-mode: both;
+            animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .fade-in-up {
+            animation-name: fadeInUp;
+        }
+
+        .fade-in {
+            animation-name: fadeIn;
+        }
+
+        .slide-in-left {
+            animation-name: slideInLeft;
+        }
+
+        .slide-in-right {
+            animation-name: slideInRight;
+        }
+
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-5 {
+            animation-delay: 0.5s;
+        }
+
+        .animated {
+            opacity: 1;
+        }
+        
+        .cover-grid {
+            display: grid;
+            grid-template-columns: 55% 45%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .cover-content {
+            padding: 8rem 2rem 6rem 0;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .cover-tag {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background-color: rgba(255, 75, 0, 0.1);
+            color: var(--flame);
+            font-weight: 600;
+            font-size: 0.875rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border-radius: 30px;
+            margin-bottom: 1.5rem;
+            transition: all var(--transition-normal);
+            border: 1px solid transparent;
+        }
+        
+        .cover-tag:hover {
+            border-color: var(--flame);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-flame);
+        }
+        
+        .cover-title {
+            margin-bottom: 1.5rem;
+            position: relative;
+            font-size: clamp(3.5rem, 6vw, 6.5rem);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            max-width: 100%;
+            white-space: normal;
+            word-wrap: break-word;
+        }
+        
+        .cover-title span {
+            color: var(--flame);
+            display: inline;
+            position: relative;
+        }
+        
+        .cover-title span::after {
+            content: '';
+            position: absolute;
+            bottom: 0.15em;
+            left: 0;
+            width: 100%;
+            height: 0.05em;
+            background-color: var(--flame);
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+        .cover-description {
+            font-size: 1.25rem;
+            max-width: 40rem;
+            margin-bottom: 2rem;
+        }
+        
+        .cover-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .cover-action {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all var(--transition-normal);
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cover-action::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.5s ease;
+        }
+        
+        .cover-action:hover::before {
+            left: 100%;
+        }
+        
+        .cover-action.primary {
+            background-color: var(--flame);
+            color: var(--white);
+        }
+        
+        .cover-action.primary:hover {
+            background-color: var(--flame-light);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-flame);
+        }
+        
+        .cover-action.secondary {
+            background-color: var(--camp-green);
+            color: var(--white);
+            animation: pulse 2s infinite;
+        }
+        
+        .cover-action.secondary:hover {
+            background-color: var(--camp-green-light);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-green);
+            animation: none;
+        }
+        
+        /* Cover Section */
+        
+        .cover-image {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        
+        .cover-img-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .cover-img {
+            position: absolute;
+            width: auto;
+            height: 100%;
+            right: 0;
+            top: 0;
+            object-fit: contain;
+            object-position: right center;
+            z-index: 10;
+            animation: fadeIn 1.5s ease-out;
+            filter: drop-shadow(0 20px 20px rgba(0,0,0,0.2));
+        }
+        
+        .cover-img-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 60%);
+            z-index: 5;
+        }
+
+        /* Resources Section */
+        .resources {
+            padding: 8rem 0;
+            background: linear-gradient(135deg, var(--off-white) 0%, #f0f0f0 100%);
+            position: relative;
+        }
+        
+        .resources::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB4PSIwIiB5PSIwIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSgzMCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiIGZpbGw9IiNGRjRCMDAiIGZpbGwtb3BhY2l0eT0iMC4wNCIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            opacity: 0.8;
+            z-index: 0;
+        }
+        
+        .resources-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .resources-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .section-title {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--flame);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            padding: 0 1rem;
+        }
+        
+        .section-title::before,
+        .section-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 2rem;
+            height: 1px;
+            background-color: var(--flame);
+            opacity: 0.5;
+        }
+        
+        .section-title::before {
+            left: -1.5rem;
+        }
+        
+        .section-title::after {
+            right: -1.5rem;
+        }
+
+        .all-in-one-banner {
+            background: linear-gradient(90deg, rgba(255,75,0,0.08) 0%, rgba(255,75,0,0.12) 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-left: 4px solid var(--flame);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
+        }
+        
+        .all-in-one-banner:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .all-in-one-content {
+            flex: 2;
+        }
+
+        .all-in-one-title {
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            font-size: 1.5rem;
+        }
+
+        .all-in-one-description {
+            color: var(--dark-gray);
+            margin-bottom: 0;
+            font-size: 1.1rem;
+        }
+
+        .all-in-one-cta {
+            flex: 1;
+            text-align: right;
+        }
+
+        .all-in-one-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: transparent;
+            color: var(--flame);
+            border: 1px solid var(--flame);
+            font-weight: 600;
+            border-radius: 4px;
+            transition: all var(--transition-normal);
+        }
+
+        .all-in-one-button:hover {
+            background-color: var(--flame);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-flame);
+        }
+        
+        .resources-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .resources-filters {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        
+        .resources-filter {
+            padding: 0.75rem 1.25rem;
+            background-color: var(--white);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all var(--transition-normal);
+            font-family: var(--font-main);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .resources-filter.active {
+            background-color: var(--flame);
+            color: var(--white);
+            box-shadow: var(--shadow-flame);
+        }
+        
+        .resources-filter:hover:not(.active) {
+            background-color: var(--light-gray);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .resources-sort {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .resources-sort-label {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+            color: var(--medium-gray);
+        }
+        
+        .resources-sort-select {
+            padding: 0.75rem 1.25rem;
+            border: none;
+            border-radius: 50px;
+            background-color: var(--white);
+            font-family: var(--font-main);
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23444' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1.25rem center;
+            padding-right: 2.5rem;
+        }
+        
+        .resources-sort-select:focus {
+            outline: none;
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        
+        .resources-featured {
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        .resources-featured-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .resources-featured-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .resources-featured-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background-color: var(--flame);
+            border-radius: 2px;
+        }
+        
+        /* Featured resources grid layout (not carousel) */
+        .resources-featured-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        
+        /* Modified Resource Card - With level & tags in one line */
+        .resource-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-slow);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+            border-top: 4px solid var(--flame);
+        }
+        
+        .resource-card:not(.show) {
+            display: none;
+        }
+        
+        .resource-card {
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+        
+        .resource-card:nth-child(2n) {
+            animation-delay: A0.2s;
+        }
+        
+        .resource-card:nth-child(3n) {
+            animation-delay: 0.4s;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .resource-card.partner-card {
+            border-top: 4px solid var(--camp-green);
+        }
+        
+        /* Fixed header info to display tags in one line */
+        .resource-header-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            flex-wrap: wrap;
+        }
+        
+        .partner-badge {
+            padding: 0.4rem 1rem;
+            background-color: var(--camp-green);
+            color: var(--white);
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: all var(--transition-normal);
+        }
+        
+        .resource-card:hover .partner-badge {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-green);
+        }
+
+        .partner-badge::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--white);
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+        }
+        
+        .resource-level {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background-color: rgba(0,0,0,0.05);
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--dark-gray);
+            transition: all var(--transition-normal);
+        }
+        
+        .resource-card:hover .resource-level {
+            transform: translateY(-2px);
+        }
+        
+        .resource-level.beginner {
+            background-color: rgba(13, 168, 71, 0.1);
+            color: var(--camp-green);
+        }
+        
+        .resource-level.intermediate {
+            background-color: rgba(255, 152, 0, 0.1);
+            color: #FF9800;
+        }
+        
+        .resource-level.advanced {
+            background-color: rgba(255, 75, 0, 0.1);
+            color: var(--flame);
+        }
+        
+        .resource-category {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background-color: var(--light-gray);
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--dark-gray);
+            transition: all var(--transition-normal);
+        }
+        
+        .resource-card:hover .resource-category {
+            transform: translateY(-2px);
+        }
+        
+        /* Additional styles for the updated resource cards */
+        .resource-title {
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1.4;
+            transition: color var(--transition-fast);
+        }
+        
+        .resource-card:hover .resource-title {
+            color: var(--flame);
+        }
+        
+        .resource-author {
+            color: var(--flame);
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .resource-author-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: var(--flame);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            transition: all var(--transition-normal);
+            box-shadow: 0 2px 5px rgba(255, 75, 0, 0.3);
+        }
+        
+        .resource-card:hover .resource-author-avatar {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .resource-description {
+            color: var(--dark-gray);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        
+        .resource-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        
+        .resource-duration {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.75rem;
+            color: var(--medium-gray);
+        }
+        
+        .resource-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        
+        .resource-stars {
+            display: flex;
+            gap: 2px;
+        }
+        
+        .resource-star {
+            color: var(--flame);
+            font-size: 0.75rem;
+            transition: transform var(--transition-fast);
+        }
+        
+        .resource-card:hover .resource-star {
+            transform: rotate(5deg);
+        }
+        
+        .resource-star.empty {
+            color: var(--light-gray);
+        }
+        
+        .resource-rating-count {
+            font-size: 0.75rem;
+            color: var(--medium-gray);
+        }
+        
+        .resource-stats {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-top: 1px solid var(--light-gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .resource-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all var(--transition-normal);
+        }
+        
+        .resource-card:hover .resource-stat {
+            transform: translateY(-3px);
+        }
+        
+        .resource-stat-value {
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: var(--deep-pitch);
+        }
+        
+        .resource-stat-label {
+            font-size: 0.75rem;
+            color: var(--medium-gray);
+        }
+        
+        .resource-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+        
+        .resource-price {
+            font-weight: 700;
+            font-size: 1.25rem;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .resource-price-original {
+            font-size: 0.875rem;
+            color: var(--medium-gray);
+            text-decoration: line-through;
+        }
+        
+        .resource-price span {
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: var(--medium-gray);
+        }
+        
+        .resource-link {
+            padding: 0.75rem 1.25rem;
+            background-color: transparent;
+            border: 2px solid var(--flame);
+            color: var(--flame);
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all var(--transition-normal);
+            border-radius: 50px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .resource-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--flame);
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+        
+        .resource-link:hover {
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-flame);
+        }
+        
+        .resource-link:hover::before {
+            left: 0;
+        }
+
+        .app-cta-banner {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(to right, rgba(255,75,0,0.05) 0%, rgba(255,75,0,0.1) 100%);
+            border-radius: 12px;
+            text-align: center;
+            position: relative;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
+        }
+        
+        .app-cta-banner:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .app-cta-banner::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, var(--flame) 0%, rgba(255,75,0,0.3) 100%);
+        }
+
+        .app-cta-text {
+            font-weight: 600;
+            color: var(--deep-pitch);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .app-cta-button {
+            display: inline-block;
+            padding: 0.85rem 1.75rem;
+            background-color: transparent;
+            border: 1px solid var(--flame);
+            color: var(--flame);
+            font-size: 0.875rem;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .app-cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--flame);
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+        
+        .app-cta-button:hover {
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-flame);
+        }
+        
+        .app-cta-button:hover::before {
+            left: 0;
+        }
+        
+        .resources-load-more {
+            margin-top: 3rem;
+            text-align: center;
+        }
+        
+        .load-more-btn {
+            padding: 1rem 2rem;
+            background-color: transparent;
+            border: 2px solid var(--flame);
+            color: var(--flame);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all var(--transition-normal);
+            border-radius: 4px;
+            font-family: var(--font-main);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .load-more-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--flame);
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+        
+        .load-more-btn:hover {
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-flame);
+        }
+        
+        .load-more-btn:hover::before {
+            left: 0;
+        }
+
+        /* App Early Access Section */
+        .app-early-access {
+            padding: 8rem 0;
+            background: linear-gradient(135deg, var(--deep-pitch) 0%, #2a3038 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .app-early-access::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB4PSIwIiB5PSIwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIzIiBoZWlnaHQ9IjMiIGZpbGw9IiNGRjRCMDAiIGZpbGwtb3BhY2l0eT0iMC4xIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIi8+PC9zdmc+');
+            opacity: 0.1;
+        }
+        
+        .app-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .app-content {
+            max-width: 40rem;
+        }
+        
+        .app-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .app-title span {
+            color: var(--flame);
+            position: relative;
+        }
+        
+        .app-title span::after {
+            content: '';
+            position: absolute;
+            bottom: 0.15em;
+            left: 0;
+            width: 100%;
+            height: 0.05em;
+            background-color: var(--flame);
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+        .app-description {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .app-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .app-feature {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.25rem;
+            font-size: 1.1rem;
+            transition: all var(--transition-normal);
+        }
+        
+        .app-feature:hover {
+            transform: translateX(5px);
+        }
+        
+        .app-feature::before {
+            content: '✓';
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background-color: rgba(255, 75, 0, 0.2);
+            color: var(--flame);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            margin-right: 1rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            box-shadow: 0 2px 10px rgba(255, 75, 0, 0.3);
+            transition: all var(--transition-normal);
+        }
+        
+        .app-feature:hover::before {
+            transform: scale(1.1) rotate(5deg);
+            background-color: rgba(255, 75, 0, 0.3);
+        }
+        
+        .app-button {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            background-color: var(--flame);
+            color: var(--white);
+            border: none;
+            font-family: var(--font-main);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .app-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+        
+        .app-button:hover {
+            background-color: var(--flame-light);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-flame);
+        }
+        
+        .app-button:hover::before {
+            left: 100%;
+        }
+        
+        .app-mockup {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .app-phone {
+            width: 300px;
+            height: 600px;
+            background-color: var(--deep-pitch);
+            border-radius: 36px;
+            position: relative;
+            overflow: hidden;
+            border: 10px solid #333;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .app-screen {
+            width: 100%;
+            height: 100%;
+            background-color: var(--white);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* Updated app header with just orange color */
+        .app-header {
+            height: 50px;
+            background-color: var(--flame);
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+        }
+        
+        .app-body {
+            padding: 15px;
+            color: var(--deep-pitch);
+            height: calc(100% - 50px);
+            overflow-y: auto;
+            background-color: white;
+        }
+        
+        .app-nav {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            white-space: nowrap;
+            scroll-padding: 10px;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .app-nav::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .app-nav-item {
+            padding: 6px 14px;
+            background-color: #f5f5f5;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            flex-shrink: 0;
+        }
+        
+        .app-nav-item.active {
+            background-color: var(--flame);
+            color: var(--white);
+            box-shadow: 0 5px 10px rgba(255, 75, 0, 0.3);
+        }
+        
+        .app-nav-item:not(.active):hover {
+            background-color: #e0e0e0;
+            transform: translateY(-2px);
+        }
+        
+        .app-courses {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .app-course {
+            background-color: #f7f7f7;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all var(--transition-normal);
+            animation: fadeInUp 0.5s ease-out forwards;
+            opacity: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .app-course:nth-child(1) {
+            animation-delay: 0.6s;
+        }
+        
+        .app-course:nth-child(2) {
+            animation-delay: 0.8s;
+        }
+        
+        .app-course:nth-child(3) {
+            animation-delay: 1s;
+        }
+        
+        .app-course:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .app-course-img {
+            height: 110px;
+            background: linear-gradient(to right, #59291e, #1d1d23);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 20px;
+            position: relative;
+            padding: 0 20px;
+            text-align: center;
+        }
+        
+        .app-course-content {
+            padding: 15px;
+            background-color: white;
+        }
+        
+        .app-course-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+            line-height: 1.3;
+        }
+        
+        /* Updated app-course-info with completion percentage */
+        .app-course-info {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .app-course-progress {
+            display: inline-block;
+            padding: 4px 10px;
+            background-color: #f0f4f9;
+            border-radius: 20px;
+            color: var(--flame);
+            font-weight: 600;
+            font-size: 12px;
+        }
+        
+        .app-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 30px;
+            background-color: #333;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            z-index: 2;
+        }
+        
+        .app-button-home {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.2);
+            z-index: 2;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+        }
+        
+        .app-button-home:hover {
+            background-color: rgba(255,255,255,0.3);
+            transform: translateX(-50%) scale(1.1);
+        }
+
+        /* Camp section placeholder */
+        .camp {
+            min-height: 10rem;
+            padding: 8rem 0;
+            background-color: var(--off-white);
+            text-align: center;
+        }
+        
+        .camp::before {
+            content: "Camp section coming soon!";
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--medium-gray);
+            opacity: 0.5;
+        }
+
+        .camp-cta {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            background-color: var(--camp-green);
+            color: var(--white);
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all var(--transition-normal);
+            align-self: flex-start;
+        }
+
+        .camp-cta:hover {
+            background-color: var(--camp-green-light);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-green);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--deep-pitch);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB4PSIwIiB5PSIwIiB3aWR0aD0iODAiIGhlaWdodD0iODAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSgxMCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiIGZpbGw9IiNGRjRCMDAiIGZpbGwtb3BhY2l0eT0iMC4wNSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            transition: transform var(--transition-fast);
+        }
+        
+        .footer-brand:hover {
+            transform: translateY(-2px);
+        }
+        
+        .footer-logo {
+            width: 2.5rem;
+            height: 2.5rem;
+            transition: transform var(--transition-fast);
+        }
+        
+        .footer-brand:hover .footer-logo {
+            transform: rotate(10deg);
+        }
+        
+        .footer-brand-name {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 0.1em;
+        }
+        
+        .footer-description {
+            opacity: 0.7;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .footer-social-link {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-normal);
+        }
+        
+        .footer-social-link:hover {
+            background-color: var(--flame);
+            transform: translateY(-3px) rotate(10deg);
+            box-shadow: var(--shadow-flame);
+        }
+        
+        .footer-heading {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+        
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 3rem;
+            height: 2px;
+            background-color: var(--flame);
+            transition: width var(--transition-normal);
+        }
+        
+        .footer-heading:hover::after {
+            width: 5rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-link {
+            margin-bottom: 0.75rem;
+            opacity: 0.7;
+            transition: all var(--transition-normal);
+            position: relative;
+            padding-left: 0;
+        }
+        
+        .footer-link a {
+            display: inline-block;
+            transition: all var(--transition-normal);
+        }
+        
+        .footer-link:hover {
+            opacity: 1;
+            padding-left: 10px;
+        }
+        
+        .footer-link:hover a {
+            color: var(--flame);
+        }
+        
+        .footer-link::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            opacity: 0;
+            transition: all var(--transition-normal);
+            color: var(--flame);
+        }
+        
+        .footer-link:hover::before {
+            opacity: 1;
+        }
+        
+        .footer-copyright {
+            text-align: center;
+            opacity: 0.5;
+            font-size: 0.875rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .cover-grid, 
+            .app-container,
+            .camp-info,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cover-content {
+                padding: 4rem 0;
+            }
+            
+            .cover-img-container {
+                height: 400px;
+            }
+            
+            .app-mockup {
+                margin-top: 3rem;
+                order: 2;
+            }
+            
+            .app-content {
+                order: 1;
+            }
+            
+            .footer-grid {
+                gap: 2rem;
+            }
+
+            .all-in-one-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .all-in-one-cta {
+                margin-top: 1.5rem;
+                text-align: center;
+            }
+            
+            .resources-featured-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .cover-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cover-content {
+                padding: 6rem 0 2rem;
+                max-width: 600px;
+                margin: 0 auto;
+                text-align: center;
+            }
+            
+            .cover-title {
+                font-size: clamp(3rem, 8vw, 5rem);
+            }
+            
+            .cover-img-container {
+                height: 400px;
+                margin-top: 2rem;
+            }
+            
+            .cover-img-overlay {
+                background: linear-gradient(to top, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 100%);
+            }
+            
+            .cover-actions {
+                justify-content: center;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .toc-sections {
+                display: none;
+            }
+            
+            .toc-action {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .resources-filters {
+                justify-content: center;
+                margin-bottom: 1rem;
+            }
+            
+            .resources-sort {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .resources-actions {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .cover-actions {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .cover-action {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .section-title::before,
+            .section-title::after {
+                display: none;
+            }
+            
+            .resources-filters {
+                justify-content: flex-start;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                padding-bottom: 1rem;
+                width: 100%;
+            }
+            
+            .resources-filter {
+                flex: 0 0 auto;
+                white-space: nowrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="toc">
+        <div class="toc-container">
+            <a href="#" class="toc-brand">
+                <svg class="toc-logo" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="32" height="32" rx="8" fill="#1A2026"/>
+                    <path d="M16.64 4.68C12.8 9.36 12.8 14.32 14.56 17.52C16.32 20.72 20.4 22.4 23.52 29.12C22.4 19.2 16.48 19.12 13.44 16.96C10.4 14.8 9.6 11.04 16.64 4.68Z" fill="#FF4B00"/>
+                </svg>
+                <span class="toc-brand-name">FUELSIT</span>
+            </a>
+            
+            <div class="toc-sections">
+                <a href="#resources" class="toc-section">Resources</a>
+                <a href="#app-early-access" class="toc-section">App</a>
+                <a href="#camp" class="toc-section">Camp</a>
+            </div>
+            
+            <a href="#resources" class="toc-action">Start Now</a>
+            
+            <button class="mobile-menu-toggle">☰</button>
+        </div>
+    </nav>
+    
+    <!-- Cover Section -->
+    <section class="cover">
+        <div class="cover-grid">
+            <div class="cover-content">
+                <div class="cover-tag animate fade-in-up">ADULT-FOCUSED TRAINING</div>
+                <h1 class="cover-title animate fade-in-up delay-1">The Game<br><span>Never Ends</span></h1>
+                <p class="cover-description animate fade-in-up delay-2">Structured training for adult players who demand more than random tutorials but don't need pro-level coaching.</p>
+                <div class="cover-actions animate fade-in-up delay-3">
+                    <a href="#resources" class="cover-action primary">START LEARNING</a>
+                    <a href="#camp" class="cover-action secondary">JOIN OUR CAMP</a>
+                </div>
+            </div>
+            
+            <div class="cover-image">
+                <div class="cover-img-container">
+                    <img src="https://i.imgur.com/0YDgL6s.png" alt="Football Player" class="cover-img">
+                    <div class="cover-img-overlay"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Resources Section -->
+    <section id="resources" class="resources">
+        <div class="resources-container">
+            <div class="resources-header">
+                <div class="section-title animate fade-in-up">CURATED RESOURCES</div>
+                <h2 class="animate fade-in-up delay-1">Enhance Your Development Journey</h2>
+                <p class="animate fade-in-up delay-2">We've carefully selected the best learning materials to accelerate your progress as an adult player.</p>
+            </div>
+
+            <div class="all-in-one-banner">
+                <div class="all-in-one-content">
+                    <h3 class="all-in-one-title">Looking for an all-in-one solution?</h3>
+                    <p class="all-in-one-description">Access all our premium resources in one place with our upcoming FUELSIT app.</p>
+                </div>
+                <div class="all-in-one-cta">
+                    <a href="#app-early-access" class="all-in-one-button">Learn more</a>
+                </div>
+            </div>
+            
+            <div class="resources-featured">
+                <div class="resources-featured-heading">
+                    <h3 class="resources-featured-title">Featured This Week</h3>
+                </div>
+                
+                <!-- Changed from carousel to grid with just two cards -->
+                <div class="resources-featured-grid">
+                    <!-- Advanced Tactical Awareness Card -->
+                    <div class="resource-card show partner-card" data-category="Tactical" data-level="advanced" data-partner="true">
+                        <div class="resource-header-info">
+                            <span class="resource-level advanced">Advanced</span>
+                            <span class="resource-category">Tactical</span>
+                            <div class="partner-badge">Fueled Partner</div>
+                        </div>
+                        <h3 class="resource-title">Advanced Tactical Awareness</h3>
+                        <div class="resource-author">
+                            <div class="resource-author-avatar">EF</div>
+                            <span>by Elite Football IQ</span>
+                        </div>
+                        <p class="resource-description">Develop your football intelligence with position-specific tactical training designed for adult competitive players.</p>
+                        <div class="resource-meta">
+                            <div class="resource-duration">
+                                <span>⏱</span>
+                                7 hours
+                            </div>
+                            <div class="resource-rating">
+                                <div class="resource-stars">
+                                    <div class="resource-star">★</div>
+                                    <div class="resource-star">★</div>
+                                    <div class="resource-star">★</div>
+                                    <div class="resource-star">★</div>
+                                    <div class="resource-star">★</div>
+                                </div>
+                                <div class="resource-rating-count">(212)</div>
+                            </div>
+                        </div>
+                        <div class="resource-stats">
+                            <div class="resource-stat">
+                                <div class="resource-stat-value">978</div>
+                                <div class="resource-stat-label">students</div>
+                            </div>
+                            <div class="resource-stat">
+                                <div class="resource-stat-value">12</div>
+                                <div class="resource-stat-label">modules</div>
+                            </div>
+                            <div class="resource-stat">
+                                <div class="resource-stat-value">4.9</div>
+                                <div class="resource-stat-label">rating</div>
+                            </div>
+                        </div>
+                        <div class="resource-footer">
+                            <div class="resource-price">
+                                <div class="resource-price-original">€45</div>
+                                €32 <span>(limited time)</span>
+                            </div>
+                            <a href="https://elitefootballiq.com/tactical" target="_blank" class="resource-link">Details</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Adult Finishing School Card -->
+                    <div class="resource-card show" data-category="Technical" data-level="intermediate" data-partner="false">
+                        <div class="resource-header-info">
+                            <span class="resource-level intermediate">Intermediate</span>
+                            <span class="resource-category">Technical</span>
+                        </div>
+                        <h3 class="resource-title">Adult Finishing School</h3>
+                        <div class="resource-author">
+                            <div class="resource-author-avatar">GG</div>
+                            <span>by Goal Getters</span>
+                        </div>
+                        <p class="resource-description">Age-appropriate shooting techniques and finishing drills for players looking to increase their goal tally.</p>
+                        <div class="resource-meta">
+                            <div class="resource-duration">
+                                <span>⏱</span>
+                                5 hours
+                            </div>
+                            <div class="resource-rating">
+                                <div class="resource-stars">
+                                    <div class="resource-star">★</div>
+                                    <div class="resource-star">★</div>
+                                    <div class="resource-star">★</div>
+                                    <div class="resource-star">★</div>
+                                    <div class="resource-star empty">★</div>
+                                </div>
+                                <div class="resource-rating-count">(187)</div>
+                            </div>
+                        </div>
+                        <div class="resource-stats">
+                            <div class="resource-stat">
+                                <div class="resource-stat-value">934</div>
+                                <div class="resource-stat-label">students</div>
+                            </div>
+                            <div class="resource-stat">
+                                <div class="resource-stat-value">8</div>
+                                <div class="resource-stat-label">modules</div>
+                            </div>
+                            <div class="resource-stat">
+                                <div class="resource-stat-value">4.6</div>
+                                <div class="resource-stat-label">rating</div>
+                            </div>
+                        </div>
+                        <div class="resource-footer">
+                            <div class="resource-price">
+                                <div class="resource-price-original">€35</div>
+                                €24.50 <span>(30% discount)</span>
+                            </div>
+                            <a href="https://goalgetters.com/finishing-school" target="_blank" class="resource-link">Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="resources-actions">
+                <div class="resources-filters">
+                    <button class="resources-filter active" data-category="all">All Resources</button>
+                    <button class="resources-filter" data-category="Exercises">Exercises</button>
+                    <button class="resources-filter" data-category="Diet">Nutrition</button>
+                    <button class="resources-filter" data-category="Mentality">Mental Training</button>
+                    <button class="resources-filter" data-category="Tactical">Tactical</button>
+                    <button class="resources-filter" data-category="Technical">Technical</button>
+                </div>
+                
+                <div class="resources-sort">
+                    <span class="resources-sort-label">Sort by:</span>
+                    <select class="resources-sort-select">
+                        <option value="level-beginner">Level: Beginner First</option>
+                        <option value="level-advanced">Level: Advanced First</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="resources-grid">
+                <!-- Manually added resource cards since dynamic loading might not work in preview -->
+                <div class="resource-card show partner-card" data-category="Exercises" data-level="intermediate" data-partner="true">
+                    <div class="resource-header-info">
+                        <span class="resource-level intermediate">Intermediate</span>
+                        <span class="resource-category">Exercises</span>
+                        <div class="partner-badge">Fueled Partner</div>
+                    </div>
+                    <h3 class="resource-title">Complete Soccer Training</h3>
+                    <div class="resource-author">
+                        <div class="resource-author-avatar">AO</div>
+                        <span>by Adam Owen</span>
+                    </div>
+                    <p class="resource-description">Comprehensive collection of drills, tactical exercises, and fitness routines designed specifically for technical improvement in adult players.</p>
+                    <div class="resource-meta">
+                        <div class="resource-duration">
+                            <span>⏱</span>
+                            8 hours
+                        </div>
+                        <div class="resource-rating">
+                            <div class="resource-stars">
+                                <div class="resource-star">★</div>
+                                <div class="resource-star">★</div>
+                                <div class="resource-star">★</div>
+                                <div class="resource-star">★</div>
+                                <div class="resource-star">★</div>
+                            </div>
+                            <div class="resource-rating-count">(426)</div>
+                        </div>
+                    </div>
+                    <div class="resource-stats">
+                        <div class="resource-stat">
+                            <div class="resource-stat-value">1240</div>
+                            <div class="resource-stat-label">students</div>
+                        </div>
+                        <div class="resource-stat">
+                            <div class="resource-stat-value">12</div>
+                            <div class="resource-stat-label">modules</div>
+                        </div>
+                        <div class="resource-stat">
+                            <div class="resource-stat-value">4.8</div>
+                            <div class="resource-stat-label">rating</div>
+                        </div>
+                    </div>
+                    <div class="resource-footer">
+                        <div class="resource-price">
+                            <div class="resource-price-original">€49.99</div>
+                            €24.99 <span>(50% off)</span>
+                        </div>
+                        <a href="https://udemy.com/course/complete-soccer-training" target="_blank" class="resource-link">Details</a>
+                    </div>
+                </div>
+
+                <div class="resource-card show" data-category="Diet" data-level="beginner" data-partner="false">
+                    <div class="resource-header-info">
+                        <span class="resource-level beginner">Beginner</span>
+                        <span class="resource-category">Diet</span>
+                    </div>
+                    <h3 class="resource-title">The Soccer Nutrition Guide</h3>
+                    <div class="resource-author">
+                        <div class="resource-author-avatar">TB</div>
+                        <span>by Tom Bates</span>
+                    </div>
+                    <p class="resource-description">Complete nutrition handbook with meal plans, hydration strategies, and supplement guidance optimized for players over 30.</p>
+                    <div class="resource-meta">
+                        <div class="resource-duration">
+                            <span>⏱</span>
+                            Self-paced
+                        </div>
+                        <div class="resource-rating">
+                            <div class="resource-stars">
+                                <div class="resource-star">★</div>
+                                <div class="resource-star">★</div>
+                                <div class="resource-star">★</div>
+                                <div class="resource-star">★</div>
+                                <div class="resource-star">★</div>
+                            </div>
+                            <div class="resource-rating-count">(215)</div>
+                        </div>
+                    </div>
+                    <div class="resource-stats">
+                        <div class="resource-stat">
+                            <div class="resource-stat-value">1875</div>
+                            <div class="resource-stat-label">students</div>
+                        </div>
+                        <div class="resource-stat">
+                            <div class="resource-stat-value">8</div>
+                            <div class="resource-stat-label">modules</div>
+                        </div>
+                        <div class="resource-stat">
+                            <div class="resource-stat-value">4.9</div>
+                            <div class="resource-stat-label">rating</div>
+                        </div>
+                    </div>
+                    <div class="resource-footer">
+                        <div class="resource-price">
+                            <div class="resource-price-original">€14.99</div>
+                            €9.99 <span>(eBook)</span>
+                        </div>
+                        <a href="https://amazon.com/Soccer-Nutrition-Guide" target="_blank" class="resource-link">Details</a>
+                    </div>
+                </div>
+
+                <div class="resource-card show partner-card" data-category="Mentality" data-level="intermediate" data-partner="true">
+                    <div class="resource-header-info">
+                        <span class="resource-level intermediate">Intermediate</span>
+                        <span class="resource-category">Mentality</span>
+                        <div class="partner-badge">Fueled Partner</div>
+                    </div>
+                    <h3 class="resource-title">The Mental Game of Soccer</h3>
+                    <div class="resource-author">
+                        <div class="resource-author-avatar">DA</div>
+                        <span>by Dan Abrahams</span>
+                    </div>
+                    <p class="resource-description">Psychology-based approach to building focus, confidence, and resilience for competitive play at any age.</p>
+                    <div class="resource-meta">
+                        <div class="resource-duration">
+                            <span>⏱</span>
+                            4 hours
+                        </div>
+                        <div class="resource-rating">
+                            <div class="resource-stars">
+                                <div class="resource-star">★</div>
+                                <div class="resource-star">★</div>
+                                <div class="resource-star">★</div>
+                                <div class="resource-star">★</div>
+                                <div class="resource-star">★</div>
+                            </div>
+                            <div class="resource-rating-count">(312)</div>
+                        </div>
+                    </div>
+                    <div class="resource-stats">
+                        <div class="resource-stat">
+                            <div class="resource-stat-value">2180</div>
+                            <div class="resource-stat-label">students</div>
+                        </div>
+                        <div class="resource-stat">
+                            <div class="resource-stat-value">7</div>
+                            <div class="resource-stat-label">modules</div>
+                        </div>
+                        <div class="resource-stat">
+                            <div class="resource-stat-value">4.9</div>
+                            <div class="resource-stat-label">rating</div>
+                        </div>
+                    </div>
+                    <div class="resource-footer">
+                        <div class="resource-price">
+                            <div class="resource-price-original">€19.99</div>
+                            €12.99 <span>(eBook + Audio)</span>
+                        </div>
+                        <a href="https://danabrahams.com/mental-game-soccer" target="_blank" class="resource-link">Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resources-load-more">
+                <button class="load-more-btn">LOAD MORE RESOURCES</button>
+            </div>
+
+            <div class="app-cta-banner">
+                <p class="app-cta-text">Want all these resources in one place? Our app brings everything together for a seamless experience.</p>
+                <a href="#app-early-access" class="app-cta-button">Discover the App</a>
+            </div>
+            
+        </div>
+    </section>
+    
+    <!-- App Early Access Section -->
+    <section id="app-early-access" class="app-early-access">
+        <div class="app-container">
+            <div class="app-content">
+                <div class="section-title animate fade-in-up">COMING SOON</div>
+                <h2 class="app-title animate fade-in-up delay-1">Get <span>Early Access</span> to Our All-in-One Education App</h2>
+                <p class="app-description animate fade-in-up delay-2">We're combining all our curated resources into a single, comprehensive learning platform designed specifically for adult players. Be the first to experience it!</p>
+                
+                <ul class="app-features">
+                    <li class="app-feature animate slide-in-left delay-2">All learning resources in one convenient place</li>
+                    <li class="app-feature animate slide-in-left delay-3">Personalized training plans based on your skill level</li>
+                    <li class="app-feature animate slide-in-left delay-4">Progress tracking and performance analytics</li>
+                    <li class="app-feature animate slide-in-left delay-5">Connect with other players in your area</li>
+                    <li class="app-feature animate slide-in-left delay-5">Expert feedback on your technique</li>
+                </ul>
+                
+                <a href="#" class="app-button animate fade-in-up delay-5">TRY IT NOW</a>
+            </div>
+            
+            <div class="app-mockup animate slide-in-right delay-3">
+                <div class="app-phone">
+                    <div class="app-notch"></div>
+                    <div class="app-screen">
+                        <div class="app-header">
+                            <!-- Logo and name removed, just orange background remains -->
+                        </div>
+                        <div class="app-body">
+                            <div class="app-nav">
+                                <div class="app-nav-item active">For You</div>
+                                <div class="app-nav-item">Exercises</div>
+                                <div class="app-nav-item">Nutrition</div>
+                                <div class="app-nav-item">Mental</div>
+                                <div class="app-nav-item">Community</div>
+                            </div>
+                            <div class="app-courses">
+                                <div class="app-course">
+                                    <div class="app-course-img">Footwork Mastery</div>
+                                    <div class="app-course-content">
+                                        <div class="app-course-title">Advanced Dribbling Techniques</div>
+                                        <div class="app-course-info">
+                                            <div class="app-course-progress">75% Complete</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="app-course">
+                                    <div class="app-course-img">Tactical Awareness</div>
+                                    <div class="app-course-content">
+                                        <div class="app-course-title">Reading the Game Like a Pro</div>
+                                        <div class="app-course-info">
+                                            <div class="app-course-progress">45% Complete</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="app-course">
+                                    <div class="app-course-img">Recovery Focus</div>
+                                    <div class="app-course-content">
+                                        <div class="app-course-title">Adult-Focused Recovery Protocols</div>
+                                        <div class="app-course-info">
+                                            <div class="app-course-progress">10% Complete</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="app-button-home"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Camp Section placeholder for future landing page -->
+    <section id="camp" class="camp"></section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <svg class="footer-logo" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="32" height="32" rx="8" fill="#1A2026"/>
+                            <path d="M16.64 4.68C12.8 9.36 12.8 14.32 14.56 17.52C16.32 20.72 20.4 22.4 23.52 29.12C22.4 19.2 16.48 19.12 13.44 16.96C10.4 14.8 9.6 11.04 16.64 4.68Z" fill="#FF4B00"/>
+                        </svg>
+                        <span class="footer-brand-name">FUELSIT</span>
+                    </div>
+                    <p class="footer-description">FUELSIT creates structured paths for dedicated players who demand more than random tutorials but don't need pro-level training.</p>
+                    <div class="footer-social">
+                        <a href="#" class="footer-social-link">FB</a>
+                        <a href="#" class="footer-social-link">IG</a>
+                        <a href="#" class="footer-social-link">TW</a>
+                        <a href="#" class="footer-social-link">YT</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#resources">Resources</a></li>
+                        <li class="footer-link"><a href="#app-early-access">App</a></li>
+                        <li class="footer-link"><a href="#camp">Camp</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-heading">Resources</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">Skill Assessment</a></li>
+                        <li class="footer-link"><a href="#">Progress Paths</a></li>
+                        <li class="footer-link"><a href="#">Community Forum</a></li>
+                        <li class="footer-link"><a href="#">Weekend Intensives</a></li>
+                        <li class="footer-link"><a href="#">Partner Programs</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-heading">Company</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">About Us</a></li>
+                        <li class="footer-link"><a href="#">Our Approach</a></li>
+                        <li class="footer-link"><a href="#">Coaches</a></li>
+                        <li class="footer-link"><a href="#">Contact</a></li>
+                        <li class="footer-link"><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-copyright">
+                &copy; 2025 FUELSIT. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Catalog data with sample courses
+        const catalogData = [
+            {
+                id: 1,
+                name: "Complete Soccer Training",
+                author: "Adam Owen",
+                authorInitials: "AO",
+                description: "Comprehensive collection of drills, tactical exercises, and fitness routines designed specifically for technical improvement in adult players.",
+                price: "€24.99",
+                originalPrice: "€49.99",
+                discountInfo: "50% off",
+                url: "udemy.com/course/complete-soccer-training",
+                category: "Exercises",
+                level: "intermediate",
+                duration: "8 hours",
+                rating: 4.8,
+                ratingCount: 426,
+                students: 1240,
+                modules: 12,
+                featured: true,
+                fueledPartner: true
+            },
+            {
+                id: 11,
+                name: "Adult Finishing School",
+                author: "Goal Getters",
+                authorInitials: "GG",
+                description: "Age-appropriate shooting techniques and finishing drills for players looking to increase their goal tally.",
+                price: "€24.50",
+                originalPrice: "€35",
+                discountInfo: "30% discount",
+                url: "goalgetters.com/finishing-school",
+                category: "Technical",
+                level: "intermediate",
+                duration: "5 hours",
+                rating: 4.6,
+                ratingCount: 187,
+                students: 934,
+                modules: 8,
+                featured: true,
+                fueledPartner: false
+            }
+        ];
+
+        // Initialize site functionality when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle sticky header
+            handleStickyHeader();
+            
+            // Initialize scroll animations
+            handleScrollAnimations();
+            
+            // Set up filter buttons
+            const filterButtons = document.querySelectorAll('.resources-filter');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => handleFilter(button));
+            });
+            
+            // Set up sort select
+            const sortSelect = document.querySelector('.resources-sort-select');
+            if (sortSelect) {
+                sortSelect.addEventListener('change', handleSort);
+            }
+            
+            // Load more button
+            const loadMoreBtn = document.querySelector('.load-more-btn');
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener('click', handleLoadMore);
+            }
+            
+            // Mobile menu toggle
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            if (menuToggle) {
+                menuToggle.addEventListener('click', () => {
+                    alert("Mobile menu functionality is disabled in this version.");
+                });
+            }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    
+                    if (targetId === '#') {
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                        return;
+                    }
+                    
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        const headerHeight = document.querySelector('.toc').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+        
+        // Handle sticky header
+        function handleStickyHeader() {
+            const header = document.querySelector('.toc');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        }
+        
+        // Handle category filtering
+        function handleFilter(selectedButton) {
+            const filterButtons = document.querySelectorAll('.resources-filter');
+            const resourceCards = document.querySelectorAll('.resources-grid .resource-card');
+            
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            selectedButton.classList.add('active');
+            
+            const category = selectedButton.dataset.category;
+            
+            // Filter resources with animation
+            resourceCards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.9)';
+                    setTimeout(() => {
+                        card.classList.add('show');
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    }, 300);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.9)';
+                    setTimeout(() => {
+                        card.classList.remove('show');
+                    }, 300);
+                }
+            });
+        }
+        
+        // Handle sorting
+        function handleSort() {
+            const sortSelect = document.querySelector('.resources-sort-select');
+            const resourcesGrid = document.querySelector('.resources-grid');
+            
+            const sortValue = sortSelect.value;
+            const resourceCards = Array.from(document.querySelectorAll('.resources-grid .resource-card'));
+            
+            // Fade out
+            resourceCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(10px)';
+            });
+            
+            setTimeout(() => {
+                // Sort based on selected option
+                resourceCards.sort((a, b) => {
+                    // Partner cards always come first
+                    if (a.dataset.partner === "true" && b.dataset.partner === "false") return -1;
+                    if (a.dataset.partner === "false" && b.dataset.partner === "true") return 1;
+                    
+                    // Then sort by the selected option
+                    if (sortValue === 'level-beginner') {
+                        // Sort with beginners first, then intermediate, then advanced
+                        const aLevel = a.dataset.level;
+                        const bLevel = b.dataset.level;
+                        
+                        if (aLevel === 'beginner' && bLevel !== 'beginner') return -1;
+                        if (bLevel === 'beginner' && aLevel !== 'beginner') return 1;
+                        if (aLevel === 'intermediate' && bLevel === 'advanced') return -1;
+                        if (bLevel === 'intermediate' && aLevel === 'advanced') return 1;
+                        return 0;
+                    } else if (sortValue === 'level-advanced') {
+                        // Sort with advanced first, then intermediate, then beginner
+                        const aLevel = a.dataset.level;
+                        const bLevel = b.dataset.level;
+                        
+                        if (aLevel === 'advanced' && bLevel !== 'advanced') return -1;
+                        if (bLevel === 'advanced' && aLevel !== 'advanced') return 1;
+                        if (aLevel === 'intermediate' && bLevel === 'beginner') return -1;
+                        if (bLevel === 'intermediate' && aLevel === 'beginner') return 1;
+                        return 0;
+                    }
+                    
+                    return 0;
+                });
+                
+                // Remove all current cards
+                while (resourcesGrid.firstChild) {
+                    resourcesGrid.removeChild(resourcesGrid.firstChild);
+                }
+                
+                // Add sorted cards
+                resourceCards.forEach(card => {
+                    resourcesGrid.appendChild(card);
+                });
+                
+                // Fade in
+                setTimeout(() => {
+                    resourceCards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, index * 50);
+                    });
+                }, 100);
+            }, 300);
+        }
+        
+        // Handle load more functionality
+        function handleLoadMore() {
+            // For demo purposes, let's hide the button since we have a limited dataset
+            const loadMoreBtn = document.querySelector('.load-more-btn');
+            if (loadMoreBtn) {
+                loadMoreBtn.style.display = 'none';
+            }
+            
+            // In a real implementation, you would load more items here
+            alert("In a full implementation, this would load more resources from the server.");
+        }
+        
+        // Animate elements when they come into view
+        function handleScrollAnimations() {
+            const animateElements = document.querySelectorAll('.animate:not(.animated)');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, 100);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animateElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                observer.observe(element);
+            });
+        }
+    </script>
+</body>
+</html>
