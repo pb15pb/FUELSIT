@@ -1,0 +1,2329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUELSIT Camps - Intensive Football Training Experiences</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzFBMjAyNiIvPgo8cGF0aCBkPSJNMTYuNjQgNC42OEMxMi44IDkuMzYgMTIuOCAxNC4zMiAxNC41NiAxNy41MkMxNi4zMiAyMC43MiAyMC40IDIyLjQgMjMuNTIgMjkuMTJDMjIuNCAxOS4yIDE2LjQ4IDE5LjEyIDEzLjQ0IDE2Ljk2QzEwLjQgMTQuOCA5LjYgMTEuMDQgMTYuNjQgNC42OFoiIGZpbGw9IiNGRjRCMDAiLz4KPC9zdmc+Cg==" type="image/svg+xml">
+    <style>
+        :root {
+            --flame: #FF4B00;
+            --flame-light: #FF7B40;
+            --deep-pitch: #1A2026;
+            --white: #FFFFFF;
+            --off-white: #F5F5F5;
+            --light-gray: #EAEAEA;
+            --medium-gray: #888888;
+            --dark-gray: #444444;
+            
+            /* Camp-specific colors */
+            --camp-dark-green: #0B5D1E;
+            --camp-medium-green: #0DA847;
+            --camp-light-green: #4FD375;
+            --camp-pale-green: #E8F5EB;
+            --camp-green-gradient: linear-gradient(135deg, var(--camp-dark-green) 0%, var(--camp-medium-green) 100%);
+            
+            --font-main: 'Barlow', sans-serif;
+            --font-accent: 'Bebas Neue', sans-serif;
+            
+            --transition-speed: 0.3s;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            overflow-x: hidden;
+            font-family: var(--font-main);
+            color: var(--deep-pitch);
+            background-color: var(--white);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            width: 100%;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            line-height: 1.2;
+        }
+        
+        h1 {
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+        
+        h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            font-weight: 600;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background-color: var(--white);
+            padding: 1.2rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all var(--transition-speed) ease;
+        }
+        
+        .nav.scrolled {
+            padding: 0.6rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .nav.scrolled .nav-logo {
+            width: 2rem;
+            height: 2rem;
+        }
+        
+        .nav.scrolled .nav-brand-name {
+            font-size: 1.3rem;
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all var(--transition-speed) ease;
+        }
+        
+        .nav-logo {
+            width: 2.5rem;
+            height: 2.5rem;
+            transition: all var(--transition-speed) ease;
+        }
+        
+        .nav-brand-name {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 0.1em;
+            transition: all var(--transition-speed) ease;
+        }
+        
+        .nav-brand-camp {
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            background-color: var(--camp-medium-green);
+            color: var(--white);
+            border-radius: 4px;
+            font-size: 0.875rem;
+            margin-left: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-link {
+            font-weight: 600;
+            position: relative;
+            padding: 0.5rem 0;
+            color: var(--deep-pitch);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--camp-medium-green);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link.active {
+            color: var(--flame);
+        }
+        
+        .nav-link.active::after {
+            width: 100%;
+            background-color: var(--flame);
+        }
+        
+        /* Countdown timers - moved to hero section */
+        .hero-countdown-container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            background-color: var(--camp-pale-green);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .countdown-box {
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            padding: 1.5rem 1rem;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            border: 3px solid var(--camp-medium-green);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .countdown-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+            display: none;
+        }
+        
+        .countdown-box:hover::before {
+            display: block;
+        }
+        
+        @keyframes shimmer {
+            100% {
+                left: 100%;
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .countdown-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            border-color: var(--flame);
+        }
+        
+        .countdown-title {
+            font-weight: 800;
+            font-size: 2.5rem;
+            color: var(--camp-dark-green);
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .countdown-label {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--medium-gray);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .countdown-timer {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--flame);
+            margin-bottom: 0.5rem;
+            animation: pulse 2s infinite;
+            padding: 0.25rem;
+            background-color: rgba(255, 75, 0, 0.1);
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            line-height: 1.2;
+        }
+        
+        .countdown-timer span {
+            display: inline-block;
+            min-width: 3rem;
+        }
+        
+        .countdown-meta {
+            margin: 1rem 0;
+            font-weight: 700;
+            font-size: 0.875rem;
+            color: var(--flame);
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: rgba(255, 75, 0, 0.1);
+            border-radius: 50px;
+            animation: pulse 2s infinite;
+        }
+        
+        .countdown-price {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--deep-pitch);
+            margin: 0.5rem 0;
+        }
+        
+        .countdown-action {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--camp-medium-green);
+            color: var(--white);
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        
+        .countdown-action:hover {
+            background-color: var(--flame);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 75, 0, 0.3);
+        }
+        
+        .nav-action {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--camp-medium-green);
+            border-radius: 2px;
+            color: var(--white);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-action:hover {
+            background-color: var(--camp-dark-green);
+            transform: translateY(-2px);
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--deep-pitch);
+        }
+        
+        /* Hero Section */
+        .hero {
+            margin-top: 5rem;
+            background: var(--camp-green-gradient);
+            color: var(--white);
+            padding: 8rem 0 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB4PSIwIiB5PSIwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSgzMCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNGRkZGRkYiIGZpbGwtb3BhY2l0eT0iMC4xIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIi8+PC9zdmc+');
+            opacity: 0.4;
+        }
+        
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+        }
+        
+        .hero-title {
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+        
+        .hero-title span {
+            color: var(--flame);
+            background: var(--white);
+            padding: 0 0.5rem;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+        
+        .hero-description {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .hero-action {
+            padding: 1rem 2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+        
+        .hero-action.primary {
+            background-color: var(--white);
+            color: var(--camp-dark-green);
+        }
+        
+        .hero-action.primary:hover {
+            background-color: var(--off-white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-action.secondary {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+        
+        .hero-action.secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .hero-image {
+            position: relative;
+            height: 500px;
+        }
+        
+        .hero-img {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.2));
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 8rem 0;
+            background-color: var(--white);
+        }
+        
+        .features-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .features-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 5rem;
+        }
+        
+        .section-title {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--camp-medium-green);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--camp-pale-green);
+            border-radius: 50px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: var(--white);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: var(--camp-light-green);
+        }
+        
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background-color: var(--camp-pale-green);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--camp-dark-green);
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-description {
+            color: var(--dark-gray);
+        }
+        
+        /* Camps Section */
+        .camps {
+            padding: 8rem 0;
+            background-color: var(--camp-pale-green);
+            position: relative;
+        }
+        
+        .camps::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB4PSIwIiB5PSIwIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSgzMCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiIGZpbGw9IiMwQjVEMUUiIGZpbGwtb3BhY2l0eT0iMC4wNCIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+        }
+        
+        .camps-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .camps-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 5rem;
+        }
+        
+        .camps-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .camps-filter {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--white);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: var(--font-main);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--deep-pitch);
+        }
+        
+        .camps-filter.active {
+            background-color: var(--camp-medium-green);
+            color: var(--white);
+        }
+        
+        .camps-filter:hover:not(.active) {
+            background-color: var(--light-gray);
+            transform: translateY(-2px);
+        }
+        
+        .camps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .camp-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            height: 100%;
+        }
+        
+        .camp-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .camp-image {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .camp-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .camp-card:hover .camp-img {
+            transform: scale(1.05);
+        }
+        
+        .camp-location {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .camp-content {
+            padding: 1.5rem;
+        }
+        
+        .camp-date {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--camp-pale-green);
+            color: var(--camp-dark-green);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        
+        .camp-level {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            align-items: center;
+        }
+        
+        .camp-level-label {
+            font-size: 0.875rem;
+            color: var(--medium-gray);
+            font-weight: 600;
+        }
+        
+        .camp-level-indicator {
+            display: flex;
+            gap: 2px;
+        }
+        
+        .camp-level-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+        }
+        
+        .camp-level-dot.active {
+            background-color: var(--camp-medium-green);
+        }
+        
+        .camp-goal {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--deep-pitch);
+        }
+        
+        .camp-features {
+            margin-bottom: 1.5rem;
+        }
+        
+        .camp-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-gray);
+            font-size: 0.875rem;
+        }
+        
+        .camp-feature-icon {
+            color: var(--camp-medium-green);
+            font-weight: bold;
+        }
+        
+        .camp-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--light-gray);
+        }
+        
+        .camp-price {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--camp-dark-green);
+        }
+        
+        .camp-price span {
+            font-size: 0.875rem;
+            font-weight: 400;
+            color: var(--medium-gray);
+        }
+        
+        .camp-action {
+            padding: 0.5rem 1rem;
+            background-color: var(--camp-medium-green);
+            color: var(--white);
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+        
+        .camp-card:hover .camp-action {
+            background-color: var(--camp-dark-green);
+        }
+        
+        /* Form Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background-color: var(--white);
+            border-radius: 8px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+            transform: translateY(50px);
+            transition: all 0.3s ease;
+        }
+        
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 2rem;
+            height: 2rem;
+            background-color: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--dark-gray);
+            font-weight: bold;
+        }
+        
+        .modal-close:hover {
+            background-color: var(--medium-gray);
+            color: var(--white);
+        }
+        
+        .form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .form-title {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-subtitle {
+            color: var(--medium-gray);
+        }
+        
+        .selected-camp {
+            background-color: var(--camp-pale-green);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--camp-light-green);
+        }
+        
+        .selected-camp-title {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--camp-dark-green);
+            font-size: 1.25rem;
+        }
+        
+        .selected-camp-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+        }
+        
+        .selected-camp-detail {
+            color: var(--deep-pitch);
+        }
+        
+        .selected-camp-detail span {
+            font-weight: 600;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--deep-pitch);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            font-family: var(--font-main);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--camp-medium-green);
+            box-shadow: 0 0 0 3px rgba(13, 168, 71, 0.1);
+        }
+        
+        .form-privacy {
+            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+            color: var(--medium-gray);
+        }
+        
+        .form-privacy a {
+            color: var(--camp-medium-green);
+            text-decoration: underline;
+        }
+        
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--camp-medium-green);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-family: var(--font-main);
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .form-submit:hover {
+            background-color: var(--camp-dark-green);
+            transform: translateY(-2px);
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 8rem 0;
+            background-color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 80%;
+            height: 180%;
+            background-color: var(--camp-pale-green);
+            border-radius: 50px;
+            transform: rotate(-20deg);
+            z-index: 0;
+        }
+        
+        .testimonials-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonials-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 5rem;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            padding: 2rem;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: var(--camp-light-green);
+        }
+        
+        .testimonial-content {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+        
+        .testimonial-content::before {
+            content: '"';
+            position: absolute;
+            top: -0.5rem;
+            left: 0;
+            font-size: 4rem;
+            color: var(--camp-light-green);
+            line-height: 1;
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--camp-pale-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--camp-dark-green);
+        }
+        
+        .testimonial-info {
+            flex-grow: 1;
+        }
+        
+        .testimonial-name {
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+        
+        .testimonial-role {
+            font-size: 0.875rem;
+            color: var(--medium-gray);
+        }
+        
+        .testimonial-camp {
+            font-size: 0.75rem;
+            color: var(--camp-medium-green);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 8rem 0;
+            background-color: var(--camp-pale-green);
+        }
+        
+        .faq-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .faq-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 5rem;
+        }
+        
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: var(--white);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            border-color: var(--camp-light-green);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            background-color: var(--white);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-icon {
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 1000px;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 8rem 0;
+            background: var(--camp-green-gradient);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB4PSIwIiB5PSIwIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSgzMCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiNGRkZGRkYiIGZpbGwtb3BhY2l0eT0iMC4xIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIi8+PC9zdmc+');
+            opacity: 0.4;
+        }
+        
+        .cta-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-title {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-description {
+            font-size: 1.25rem;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+        
+        .cta-action {
+            padding: 1.25rem 3rem;
+            background-color: var(--white);
+            color: var(--camp-dark-green);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            display: inline-block;
+        }
+        
+        .cta-action:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--deep-pitch);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-logo {
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+        
+        .footer-brand-name {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 0.1em;
+        }
+        
+        .footer-brand-camp {
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            background-color: var(--camp-medium-green);
+            color: var(--white);
+            border-radius: 4px;
+            font-size: 0.875rem;
+            margin-left: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .footer-description {
+            opacity: 0.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .footer-social-link {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-social-link:hover {
+            background-color: var(--camp-medium-green);
+            transform: translateY(-3px);
+        }
+        
+        .footer-heading {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+        
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 3rem;
+            height: 2px;
+            background-color: var(--camp-medium-green);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-link {
+            margin-bottom: 0.75rem;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            opacity: 1;
+            color: var(--camp-light-green);
+        }
+        
+        .footer-copyright {
+            text-align: center;
+            opacity: 0.5;
+            font-size: 0.875rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 5rem;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            padding: 1rem 2rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            display: none;
+            z-index: 99;
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        .mobile-menu-links {
+            list-style: none;
+        }
+        
+        .mobile-menu-link {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--light-gray);
+            font-weight: 600;
+        }
+        
+        .mobile-menu-link:last-child {
+            border-bottom: none;
+        }
+        
+        .mobile-menu-link a {
+            display: block;
+            width: 100%;
+        }
+        
+        .mobile-menu-link a.active {
+            color: var(--flame);
+        }
+        
+        .mobile-cta {
+            display: block;
+            text-align: center;
+            padding: 1rem;
+            background-color: var(--camp-medium-green);
+            color: var(--white);
+            margin-top: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-radius: 4px;
+        }
+        
+    /* Mobile Optimization */
+    @media (max-width: 768px) {
+        /* General spacing adjustments */
+        .hero, .features, .camps, .testimonials, .faq, .cta {
+            padding: 4rem 0;
+        }
+        
+        /* Header adjustments */
+        .nav-container {
+            padding: 0 1rem;
+        }
+        
+        /* Hero section adjustments */
+        .hero-container {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .hero-content {
+            text-align: center;
+        }
+        
+        .hero-title {
+            font-size: clamp(2.2rem, 8vw, 3.5rem);
+            margin-bottom: 1rem;
+        }
+        
+        .hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-actions {
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .hero-action {
+            width: 100%;
+            text-align: center;
+        }
+        
+        /* Countdown adjustments */
+        .hero-countdown-container {
+            padding: 1.5rem 1rem;
+            gap: 1.5rem;
+        }
+        
+        .countdown-box {
+            padding: 1.2rem 0.8rem;
+        }
+        
+        .countdown-title {
+            font-size: 1.8rem;
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .countdown-timer {
+            font-size: 1.2rem;
+            padding: 0.25rem;
+        }
+        
+        .countdown-timer span {
+            min-width: 2.2rem;
+        }
+        
+        .countdown-meta {
+            font-size: 0.8rem;
+            padding: 0.4rem 0.8rem;
+            margin: 0.7rem 0;
+        }
+        
+        .countdown-price {
+            font-size: 1.2rem;
+        }
+        
+        .countdown-action {
+            padding: 0.6rem 1rem;
+            font-size: 0.8rem;
+            width: 100%;
+        }
+        
+        /* Features section adjustments */
+        .features-header h2 {
+            font-size: 2rem;
+        }
+        
+        .features-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        
+        .feature-card {
+            padding: 1.2rem;
+        }
+        
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Camp cards adjustments */
+        .camps-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .camp-card {
+            max-width: 100%;
+        }
+        
+        /* Testimonials adjustments */
+        .testimonial-card {
+            padding: 1.5rem;
+        }
+        
+        .testimonial-content {
+            padding-left: 1.5rem;
+        }
+        
+        .testimonial-content::before {
+            font-size: 3rem;
+        }
+        
+        /* FAQ adjustments */
+        .faq-question {
+            padding: 1.2rem;
+            font-size: 1rem;
+        }
+        
+        /* CTA adjustments */
+        .cta-title {
+            font-size: 2rem;
+        }
+        
+        .cta-description {
+            font-size: 1.1rem;
+        }
+        
+        .cta-action {
+            padding: 1rem 2rem;
+            width: 100%;
+            display: block;
+        }
+        
+        /* Footer adjustments */
+        .footer-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+    }
+    
+    /* Small mobile adjustments */
+    @media (max-width: 480px) {
+        .nav-container {
+            padding: 0 0.8rem;
+        }
+        
+        .nav-brand-name {
+            font-size: 1.2rem;
+        }
+        
+        .nav-brand-camp {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+        }
+        
+        .mobile-menu-toggle {
+            font-size: 1.3rem;
+        }
+        
+        .hero-title {
+            font-size: clamp(1.8rem, 7vw, 2.5rem);
+        }
+        
+        .section-title {
+            font-size: 0.8rem;
+        }
+        
+        .hero-countdown-container {
+            padding: 1rem 0.5rem;
+        }
+        
+        .countdown-box {
+            padding: 1rem 0.5rem;
+        }
+        
+        .countdown-title {
+            font-size: 1.5rem;
+        }
+        
+        .countdown-timer {
+            font-size: 1rem;
+        }
+        
+        .countdown-timer span {
+            min-width: 1.8rem;
+        }
+        
+        .form-submit {
+            padding: 0.8rem;
+        }
+    }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <svg class="nav-logo" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="32" height="32" rx="8" fill="#1A2026"/>
+                    <path d="M16.64 4.68C12.8 9.36 12.8 14.32 14.56 17.52C16.32 20.72 20.4 22.4 23.52 29.12C22.4 19.2 16.48 19.12 13.44 16.96C10.4 14.8 9.6 11.04 16.64 4.68Z" fill="#FF4B00"/>
+                </svg>
+                <span class="nav-brand-name">FUELSIT</span>
+                <span class="nav-brand-camp">CAMPS</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html" class="nav-link active">Learn with us</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#camps" class="nav-link">Events</a>
+                <a href="#testimonials" class="nav-link">Stories</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+            </div>
+            
+            <a href="#camps" class="nav-action">View All Camps</a>
+            
+            <button class="mobile-menu-toggle">☰</button>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu (hidden by default) -->
+    <div class="mobile-menu">
+        <ul class="mobile-menu-links">
+            <li class="mobile-menu-link"><a href="index.html">Home</a></li>
+            <li class="mobile-menu-link"><a href="index.html" class="active">Learn with us</a></li>
+            <li class="mobile-menu-link"><a href="#about">About</a></li>
+            <li class="mobile-menu-link"><a href="#camps">Events</a></li>
+            <li class="mobile-menu-link"><a href="#testimonials">Stories</a></li>
+            <li class="mobile-menu-link"><a href="#faq">FAQ</a></li>
+        </ul>
+        <a href="#camps" class="mobile-cta">View All Camps</a>
+    </div>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Intensive Football Training <span>Camps</span> for Adult Players</h1>
+                <p class="hero-description">Take your game to the next level with our structured, immersive training camps designed specifically for dedicated adult players.</p>
+                <div class="hero-actions">
+                    <a href="#camps" class="hero-action primary">View Upcoming Camps</a>
+                    <a href="#about" class="hero-action secondary">Learn More</a>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <!-- Countdown timers with improved urgency and call to action -->
+                <div class="hero-countdown-container">
+                    <div class="countdown-box barcelona-countdown" data-camp="1">
+                        <div class="countdown-title">BARCELONA</div>
+                        <div class="countdown-label">Goalkeeper Camp</div>
+                        <div class="countdown-timer" id="barcelona-timer">Loading...</div>
+                        <div class="countdown-meta">Only 3 spots remaining!</div>
+                        <div class="countdown-price">€129</div>
+                        <a href="#camps" class="countdown-action">Reserve Now</a>
+                    </div>
+                    <div class="countdown-box mallorca-countdown" data-camp="6">
+                        <div class="countdown-title">MALLORCA</div>
+                        <div class="countdown-label">Beach Soccer Intensive</div>
+                        <div class="countdown-timer" id="mallorca-timer">Loading...</div>
+                        <div class="countdown-meta">Early Bird Price Ending Soon!</div>
+                        <div class="countdown-price">€990</div>
+                        <a href="#camps" class="countdown-action">Secure Your Place</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section (reduced to 4 cards) -->
+    <section id="about" class="features">
+        <div class="features-container">
+            <div class="features-header">
+                <span class="section-title">WHY CHOOSE OUR CAMPS</span>
+                <h2>What Sets FUELSIT Camps Apart</h2>
+                <p>Our camps are specifically designed for adult players who want structured, intensive training experiences that deliver noticeable improvement in a short time.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍🏫</div>
+                    <h3 class="feature-title">Expert Coaches</h3>
+                    <p class="feature-description">Learn from professional coaches with experience working with adult players at all levels. Our coaches understand how adults learn and adapt their methods accordingly.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Personalized Feedback</h3>
+                    <p class="feature-description">Receive individual attention and tailored feedback on your performance. With small group sizes, our coaches can focus on your specific needs and improvement areas.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3 class="feature-title">Adult-Focused Approach</h3>
+                    <p class="feature-description">Training designed with adult bodies and schedules in mind. Our camps balance intensive training with proper recovery to prevent injuries and maximize learning.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Goal-Oriented Training</h3>
+                    <p class="feature-description">Each camp has a specific focus area, allowing you to choose training that aligns with your personal development goals and position-specific needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Camps Section -->
+    <section id="camps" class="camps">
+        <div class="camps-container">
+            <div class="camps-header">
+                <span class="section-title">UPCOMING EVENTS</span>
+                <h2>Find Your Perfect Training Camp</h2>
+                <p>Browse our selection of upcoming camps and choose the one that best fits your schedule, location preference, and development goals.</p>
+            </div>
+            
+            <div class="camps-filters">
+                <button class="camps-filter active" data-filter="all">All Camps</button>
+                <button class="camps-filter" data-filter="weekend">Weekend Camps</button>
+                <button class="camps-filter" data-filter="intensive">Intensive Retreats</button>
+                <button class="camps-filter" data-filter="specialized">Specialized Training</button>
+            </div>
+            
+            <div class="camps-grid">
+                <!-- Camp cards will be generated dynamically -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Registration Form Modal -->
+    <div class="modal" id="registration-modal">
+        <div class="modal-content">
+            <div class="modal-close">&times;</div>
+            
+            <div class="form-header">
+                <h3 class="form-title">Register for FUELSIT Camp</h3>
+                <p class="form-subtitle">Complete the form below to secure your spot</p>
+            </div>
+            
+            <div class="selected-camp">
+                <div class="selected-camp-title" id="selected-camp-title">Camp Title</div>
+                <div class="selected-camp-details">
+                    <div class="selected-camp-detail">Location: <span id="selected-camp-location">City</span></div>
+                    <div class="selected-camp-detail">Date: <span id="selected-camp-date">Dates</span></div>
+                    <div class="selected-camp-detail">Price: <span id="selected-camp-price">Price</span></div>
+                </div>
+            </div>
+            
+            <form id="registration-form">
+                <div class="form-group">
+                    <label for="name" class="form-label">Full Name</label>
+                    <input type="text" id="name" name="name" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" id="email" name="email" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" class="form-input" required>
+                </div>
+                
+                <div class="form-privacy">
+                    By submitting this form, you agree to our <a href="#">Privacy Policy</a> and consent to receive communications from FUELSIT.
+                </div>
+                
+                <button type="submit" class="form-submit">Reserve My Spot</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="testimonials-container">
+            <div class="testimonials-header">
+                <span class="section-title">SUCCESS STORIES</span>
+                <h2>What Our Camp Participants Say</h2>
+                <p>Hear from adult players who have experienced significant improvement through our intensive training camps.</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        The goalkeeper camp in Barcelona was exactly what I needed. In just three days, I completely transformed my positioning and distribution skills. The coaches identified weaknesses I didn't even know I had and gave me specific drills to address them.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MR</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Miguel Rodriguez</div>
+                            <div class="testimonial-role">Recreational League Goalkeeper, 36</div>
+                            <div class="testimonial-camp">Barcelona Goalkeepers Camp</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        I was skeptical about the price of the Bilbao camp, but it was worth every euro. The week-long intensive training broke down and rebuilt my entire approach to the game. Six months later, I'm still applying what I learned and seeing improvements.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SL</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Sarah Lawson</div>
+                            <div class="testimonial-role">Semi-Professional Midfielder, 29</div>
+                            <div class="testimonial-camp">Bilbao Intensive Retreat</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        The one-day Madrid camp was perfect for my busy schedule. I was amazed at how much we covered in just a single day. The coaches efficiently identified my weaknesses and gave me a personalized plan to work on them.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JP</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">James Peterson</div>
+                            <div class="testimonial-role">Weekend League Forward, 42</div>
+                            <div class="testimonial-camp">Madrid Express Camp</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="faq-container">
+            <div class="faq-header">
+                <span class="section-title">QUESTIONS & ANSWERS</span>
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about our football training camps.</p>
+            </div>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How fit do I need to be to attend a camp?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our camps accommodate various fitness levels. We recommend being able to comfortably play a full match, but we design our sessions with appropriate intensity and rest periods for adult players. Each camp description specifies the physical demands, and we offer modifications when needed.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What should I bring to a camp?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You should bring your normal football gear: boots (both firm ground and turf if possible), shin guards, training and match kit, water bottle, sunscreen, and weather-appropriate clothing. For multi-day camps, we'll provide a detailed packing list after registration.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Are accommodations included in multi-day camps?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>For our intensive retreats, accommodation is typically included in the price. For weekend camps, accommodation is usually not included, but we offer preferred rates at partner hotels. Check the specific camp details or contact us for more information about your chosen camp.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What's the typical coach-to-player ratio?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We maintain a low coach-to-player ratio to ensure quality instruction. Typically, we have one coach for every 6-8 players. Specialized camps, like goalkeeper training, may have even smaller ratios of 1:4. This allows for personalized attention and feedback.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I get a refund if I need to cancel?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer a tiered refund policy: full refund if canceled 30+ days before the camp, 50% refund if canceled 14-29 days before, and no refund for cancellations less than 14 days before. However, we do allow you to transfer your registration to another person or to a future camp (subject to availability).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-container">
+            <h2 class="cta-title">Ready to Elevate Your Game?</h2>
+            <p class="cta-description">Join players from around the world who have transformed their skills and understanding of the game through our intensive training camps.</p>
+            <a href="#camps" class="cta-action">Find Your Camp</a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <svg class="footer-logo" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="32" height="32" rx="8" fill="#1A2026"/>
+                            <path d="M16.64 4.68C12.8 9.36 12.8 14.32 14.56 17.52C16.32 20.72 20.4 22.4 23.52 29.12C22.4 19.2 16.48 19.12 13.44 16.96C10.4 14.8 9.6 11.04 16.64 4.68Z" fill="#FF4B00"/>
+                        </svg>
+                        <span class="footer-brand-name">FUELSIT</span>
+                        <span class="footer-brand-camp">CAMPS</span>
+                    </div>
+                    <p class="footer-description">FUELSIT Camps provides intensive, structured training experiences specifically designed for dedicated adult players who want to dramatically improve their skills.</p>
+                    <div class="footer-social">
+                        <a href="#" class="footer-social-link">FB</a>
+                        <a href="#" class="footer-social-link">IG</a>
+                        <a href="#" class="footer-social-link">TW</a>
+                        <a href="#" class="footer-social-link">YT</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="index.html">Home</a></li>
+                        <li class="footer-link"><a href="#about">About</a></li>
+                        <li class="footer-link"><a href="#camps">Events</a></li>
+                        <li class="footer-link"><a href="#testimonials">Stories</a></li>
+                        <li class="footer-link"><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-heading">Resources</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">Camp Preparation</a></li>
+                        <li class="footer-link"><a href="#">Training Materials</a></li>
+                        <li class="footer-link"><a href="#">Camp Photos</a></li>
+                        <li class="footer-link"><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-heading">Contact</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">Email Us</a></li>
+                        <li class="footer-link"><a href="#">WhatsApp</a></li>
+                        <li class="footer-link"><a href="#">Support</a></li>
+                        <li class="footer-link"><a href="#">Partnerships</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-copyright">
+                &copy; 2025 FUELSIT. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Sample camp data
+        const campData = [
+            {
+                id: 1,
+                city: "Barcelona",
+                location: "FC Barcelona Training Facilities",
+                image: "https://api.placeholder.com/600/400?text=Barcelona+Camp",
+                dates: "12-14 June 2025",
+                level: "all", // all, beginner, intermediate, advanced
+                goal: "Goalkeeper Specialized Course",
+                price: "€129",
+                features: [
+                    "Goalkeeper-specific training",
+                    "Positioning and footwork",
+                    "Distribution techniques",
+                    "1-on-1 situations"
+                ],
+                type: "weekend"
+            },
+            {
+                id: 2,
+                city: "Bilbao",
+                location: "Athletic Club Academy",
+                image: "https://api.placeholder.com/600/400?text=Bilbao+Camp",
+                dates: "14-22 July 2025",
+                level: "intermediate",
+                goal: "Complete Game Breakdown & Refinement",
+                price: "€1490",
+                features: [
+                    "Full tactical analysis",
+                    "Technical skill refinement",
+                    "Match simulation",
+                    "Video analysis sessions"
+                ],
+                type: "intensive"
+            },
+            {
+                id: 3,
+                city: "Madrid",
+                location: "Ciudad Deportiva",
+                image: "https://api.placeholder.com/600/400?text=Madrid+Camp",
+                dates: "12 August 2025",
+                level: "all",
+                goal: "Fast-Track Football Understanding",
+                price: "€50",
+                features: [
+                    "Tactical awareness",
+                    "Reading the game",
+                    "Positional play",
+                    "Decision making"
+                ],
+                type: "specialized"
+            },
+            {
+                id: 4,
+                city: "Valencia",
+                location: "Ciudad Deportiva de Paterna",
+                image: "https://api.placeholder.com/600/400?text=Valencia+Camp",
+                dates: "5-7 September 2025",
+                level: "beginner",
+                goal: "Fundamentals Mastery",
+                price: "€199",
+                features: [
+                    "Basic technique refinement",
+                    "Passing & receiving",
+                    "First touch development",
+                    "Game awareness"
+                ],
+                type: "weekend"
+            },
+            {
+                id: 5,
+                city: "Seville",
+                location: "Ramón Sánchez Pizjuán Stadium",
+                image: "https://api.placeholder.com/600/400?text=Seville+Camp",
+                dates: "20 October 2025",
+                level: "advanced",
+                goal: "Elite Technical Workshop",
+                price: "€85",
+                features: [
+                    "Advanced ball skills",
+                    "Creative passing techniques",
+                    "Set piece specialization",
+                    "Pro-level drills"
+                ],
+                type: "specialized"
+            },
+            {
+                id: 6,
+                city: "Mallorca",
+                location: "Beach Soccer Arena",
+                image: "https://api.placeholder.com/600/400?text=Mallorca+Camp",
+                dates: "3-10 November 2025",
+                level: "intermediate",
+                goal: "Beach Soccer Intensive",
+                price: "€990",
+                features: [
+                    "Beach soccer techniques",
+                    "Surface adaptation skills",
+                    "Special tactics for sand",
+                    "Physical conditioning"
+                ],
+                type: "intensive"
+            }
+        ];
+        
+        // Generate camp cards
+        function generateCampCards() {
+            const campsGrid = document.querySelector('.camps-grid');
+            campsGrid.innerHTML = '';
+            
+            campData.forEach(camp => {
+                const campCard = document.createElement('div');
+                campCard.className = 'camp-card';
+                campCard.dataset.id = camp.id;
+                campCard.dataset.type = camp.type;
+                
+                // Create level dots based on level
+                let levelDots = '';
+                if (camp.level === 'beginner') {
+                    levelDots = `
+                        <div class="camp-level-dot active"></div>
+                        <div class="camp-level-dot"></div>
+                        <div class="camp-level-dot"></div>
+                    `;
+                } else if (camp.level === 'intermediate') {
+                    levelDots = `
+                        <div class="camp-level-dot active"></div>
+                        <div class="camp-level-dot active"></div>
+                        <div class="camp-level-dot"></div>
+                    `;
+                } else if (camp.level === 'advanced') {
+                    levelDots = `
+                        <div class="camp-level-dot active"></div>
+                        <div class="camp-level-dot active"></div>
+                        <div class="camp-level-dot active"></div>
+                    `;
+                } else { // all
+                    levelDots = `
+                        <div class="camp-level-dot active"></div>
+                        <div class="camp-level-dot active"></div>
+                        <div class="camp-level-dot active"></div>
+                    `;
+                }
+                
+                // Generate features
+                let featuresHTML = '';
+                camp.features.forEach(feature => {
+                    featuresHTML += `
+                        <div class="camp-feature">
+                            <span class="camp-feature-icon">✓</span>
+                            <span>${feature}</span>
+                        </div>
+                    `;
+                });
+                
+                campCard.innerHTML = `
+                    <div class="camp-image">
+                        <img src="${camp.image}" alt="${camp.city} Camp" class="camp-img">
+                        <div class="camp-location">${camp.city}</div>
+                    </div>
+                    <div class="camp-content">
+                        <div class="camp-date">${camp.dates}</div>
+                        <div class="camp-level">
+                            <span class="camp-level-label">Level: ${camp.level === 'all' ? 'All Levels' : camp.level.charAt(0).toUpperCase() + camp.level.slice(1)}</span>
+                            <div class="camp-level-indicator">
+                                ${levelDots}
+                            </div>
+                        </div>
+                        <div class="camp-goal">${camp.goal}</div>
+                        <div class="camp-features">
+                            ${featuresHTML}
+                        </div>
+                        <div class="camp-footer">
+                            <div class="camp-price">${camp.price} <span>from</span></div>
+                            <div class="camp-action">Register</div>
+                        </div>
+                    </div>
+                `;
+                
+                campsGrid.appendChild(campCard);
+            });
+            
+            // Add click event to camp cards
+            addCardClickEvents();
+        }
+        
+        // Filter camps
+        function handleCampFiltering() {
+            const filterButtons = document.querySelectorAll('.camps-filter');
+            const campCards = document.querySelectorAll('.camp-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    const filter = button.getAttribute('data-filter');
+                    
+                    // Filter camps
+                    campCards.forEach(card => {
+                        card.style.display = 'block';
+                        
+                        if (filter !== 'all' && card.dataset.type !== filter) {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        }
+        
+        // Handle mobile menu
+        function handleMobileMenu() {
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+            });
+            
+            // Close menu when clicking a link
+            const mobileLinks = document.querySelectorAll('.mobile-menu-link a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                });
+            });
+        }
+        
+        // Handle FAQ accordions
+        function handleFAQAccordions() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+        }
+        
+        // Add click event to camp cards
+        function addCardClickEvents() {
+            const campCards = document.querySelectorAll('.camp-card');
+            const modal = document.getElementById('registration-modal');
+            const modalClose = document.querySelector('.modal-close');
+            
+            campCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const campId = card.dataset.id;
+                    const camp = campData.find(c => c.id == campId);
+                    
+                    // Update modal content with camp details
+                    document.getElementById('selected-camp-title').textContent = camp.goal;
+                    document.getElementById('selected-camp-location').textContent = camp.city;
+                    document.getElementById('selected-camp-date').textContent = camp.dates;
+                    document.getElementById('selected-camp-price').textContent = camp.price;
+                    
+                    // Show modal
+                    modal.classList.add('active');
+                });
+            });
+            
+            // Close modal when clicking X
+            modalClose.addEventListener('click', () => {
+                modal.classList.remove('active');
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+            
+            // Handle form submission
+            const form = document.getElementById('registration-form');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Here you would normally send the form data to your server
+                // For demo purposes, we'll just show an alert
+                alert('Thank you for your registration! We will contact you soon with more details.');
+                
+                // Reset form and close modal
+                form.reset();
+                modal.classList.remove('active');
+            });
+        }
+        
+        // Countdown timer function
+        function updateCountdowns() {
+            // Barcelona camp date: June 12, 2025
+            const barcelonaDate = new Date('June 12, 2025').getTime();
+            
+            // Mallorca camp date: November 3, 2025
+            const mallorcaDate = new Date('November 3, 2025').getTime();
+            
+            // Update countdown every second
+            setInterval(() => {
+                const now = new Date().getTime();
+                
+                // Barcelona countdown
+                const barcelonaDistance = barcelonaDate - now;
+                const barcelonaDays = Math.floor(barcelonaDistance / (1000 * 60 * 60 * 24));
+                const barcelonaHours = Math.floor((barcelonaDistance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const barcelonaMinutes = Math.floor((barcelonaDistance % (1000 * 60 * 60)) / (1000 * 60));
+                
+                // Mallorca countdown
+                const mallorcaDistance = mallorcaDate - now;
+                const mallorcaDays = Math.floor(mallorcaDistance / (1000 * 60 * 60 * 24));
+                const mallorcaHours = Math.floor((mallorcaDistance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const mallorcaMinutes = Math.floor((mallorcaDistance % (1000 * 60 * 60)) / (1000 * 60));
+                
+                // Update the HTML elements with more detailed countdown
+                document.getElementById('barcelona-timer').innerHTML = `<span>${barcelonaDays}d</span> <span>${barcelonaHours}h</span> <span>${barcelonaMinutes}m</span>`;
+                document.getElementById('mallorca-timer').innerHTML = `<span>${mallorcaDays}d</span> <span>${mallorcaHours}h</span> <span>${mallorcaMinutes}m</span>`;
+                
+            }, 1000);
+        }
+        
+        // Add click event to countdown timers
+        function handleCountdownClicks() {
+            const countdownBoxes = document.querySelectorAll('.countdown-box');
+            
+            countdownBoxes.forEach(box => {
+                box.addEventListener('click', () => {
+                    // Simply scroll to the camps section
+                    const campSection = document.getElementById('camps');
+                    
+                    if (campSection) {
+                        const headerHeight = document.querySelector('.nav').offsetHeight;
+                        const targetPosition = campSection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+        
+        // Handle scroll effects for header
+        function handleScrollEffects() {
+            const nav = document.getElementById('main-nav');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+            });
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            generateCampCards();
+            handleCampFiltering();
+            handleMobileMenu();
+            handleFAQAccordions();
+            updateCountdowns();
+            handleCountdownClicks();
+            handleScrollEffects();
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    
+                    if (targetId === '#') {
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                        return;
+                    }
+                    
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        const headerHeight = document.querySelector('.nav').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
